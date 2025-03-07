@@ -112,7 +112,7 @@ class CallkitIncomingBroadcastReceiver : BroadcastReceiver() {
                     sendEventFlutter(CallkitConstants.ACTION_CALL_ACCEPT, data)
                     context.stopService(Intent(context, CallkitSoundPlayerService::class.java))
                     callkitNotificationManager.clearIncomingNotification(data, true)
-                    addCall(context, Data.fromBundle(data), true)
+                    addCall(context, Data.fromBundle(data).apply { isAccepted = true }, true)
                 } catch (error: Exception) {
                     Log.e(TAG, null, error)
                 }
